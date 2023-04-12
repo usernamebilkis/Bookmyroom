@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".booking">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="396dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roombooking" />
+
+    <EditText
+        android:id="@+id/namebooking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/regulatext"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editetxtbg"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/boloditacic"
+        android:text="Your Personal Information"
+        android:textColor="#130202"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+    <EditText
+        android:id="@+id/bookingphone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editetxtbg"
+        android:ems="10"
+        android:fontFamily="@font/regulatext"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namebooking" />
+
+    <EditText
+        android:id="@+id/bookingroom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/regulatext"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editetxtbg"
+        android:ems="10"
+        android:hint="Room Count"
+        android:inputType="number"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookingphone" />
+
+    <EditText
+        android:id="@+id/bookingchecking"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regulatext"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editetxtbg"
+        android:ems="10"
+        android:hint="Check In Date"
+        android:inputType="date"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookingroom" />
+
+    <EditText
+        android:id="@+id/bookingcheckout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regulatext"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/editetxtbg"
+        android:ems="10"
+        android:hint="Check Out Date"
+        android:inputType="date"
+        android:padding="6dp"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookingchecking" />
+
+    <EditText
+        android:id="@+id/bookingchild"
+        android:layout_width="192dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/regulatext"
+        android:hint="Child Number"
+        android:textSize="22sp"
+        android:background="@drawable/editetxtbg"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/bookingcheckout"
+        app:layout_constraintTop_toBottomOf="@+id/bookingcheckout" />
+
+    <EditText
+        android:id="@+id/bookingadult"
+        android:layout_width="181dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:fontFamily="@font/regulatext"
+        android:hint="Adult Number"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:background="@drawable/editetxtbg"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/bookingcheckout"
+        app:layout_constraintTop_toBottomOf="@+id/bookingcheckout" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/namebooking"
+        app:layout_constraintStart_toStartOf="@+id/namebooking"
+        app:layout_constraintTop_toTopOf="@+id/namebooking"
+        app:srcCompat="@drawable/baseline_person_24" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingphone"
+        app:layout_constraintStart_toStartOf="@+id/bookingphone"
+        app:layout_constraintTop_toBottomOf="@+id/namebooking"
+        app:srcCompat="@drawable/baseline_local_phone_24" />
+
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingroom"
+        app:layout_constraintStart_toStartOf="@+id/bookingroom"
+        app:layout_constraintTop_toTopOf="@+id/bookingroom"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/baseline_other_houses_24" />
+
+    <ImageView
+        android:id="@+id/checkiinimage"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingchecking"
+        app:layout_constraintStart_toStartOf="@+id/bookingchecking"
+        app:layout_constraintTop_toTopOf="@+id/bookingchecking"
+        app:srcCompat="@drawable/baseline_calendar_today_24" />
+
+    <ImageView
+        android:id="@+id/checkoutimage"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingcheckout"
+        app:layout_constraintStart_toStartOf="@+id/bookingcheckout"
+        app:layout_constraintTop_toTopOf="@+id/bookingcheckout"
+        app:srcCompat="@drawable/baseline_calendar_today_24" />
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingchild"
+        app:layout_constraintStart_toStartOf="@+id/bookingchild"
+        app:layout_constraintTop_toTopOf="@+id/bookingchild"
+        app:layout_constraintVertical_bias="0.523"
+        app:srcCompat="@drawable/baseline_child_care_24" />
+
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="47dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bookingadult"
+        app:layout_constraintStart_toEndOf="@+id/bookingchild"
+        app:layout_constraintTop_toTopOf="@+id/bookingadult"
+        app:layout_constraintVertical_bias="0.863"
+        app:srcCompat="@drawable/baseline_pregnant_woman_24" />
+
+    <TextView
+        android:id="@+id/submit"
+        android:layout_width="132dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btnbg"
+        android:paddingTop="10dp"
+        android:text="Submit"
+        android:fontFamily="@font/adamina"
+        android:textAlignment="center"
+        android:textColor="#EFE9E9"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bookingchild" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="138dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btnbg"
+        android:paddingTop="10dp"
+        android:text="Pay"
+        android:textAlignment="center"
+        android:fontFamily="@font/adamina"
+        android:textColor="#EFE9E9"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/submit"
+        app:layout_constraintTop_toBottomOf="@+id/bookingadult" />
+</androidx.constraintlayout.widget.ConstraintLayout>
