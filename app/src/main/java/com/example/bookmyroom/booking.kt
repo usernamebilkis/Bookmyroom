@@ -21,7 +21,7 @@ class booking : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         binding.submit.setOnClickListener {
             var namebooking = binding.namebooking.text.toString()
             var phonebooking = binding.bookingphone.text.toString()

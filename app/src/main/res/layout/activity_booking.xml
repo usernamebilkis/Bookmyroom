@@ -161,8 +161,9 @@
 
     <ImageView
         android:id="@+id/imageView15"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/namebooking"
         app:layout_constraintStart_toStartOf="@+id/namebooking"
         app:layout_constraintTop_toTopOf="@+id/namebooking"
@@ -170,8 +171,9 @@
 
     <ImageView
         android:id="@+id/imageView21"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingphone"
         app:layout_constraintStart_toStartOf="@+id/bookingphone"
         app:layout_constraintTop_toBottomOf="@+id/namebooking"
@@ -179,8 +181,9 @@
 
     <ImageView
         android:id="@+id/imageView22"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingroom"
         app:layout_constraintStart_toStartOf="@+id/bookingroom"
         app:layout_constraintTop_toTopOf="@+id/bookingroom"
@@ -189,8 +192,9 @@
 
     <ImageView
         android:id="@+id/checkiinimage"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingchecking"
         app:layout_constraintStart_toStartOf="@+id/bookingchecking"
         app:layout_constraintTop_toTopOf="@+id/bookingchecking"
@@ -198,8 +202,9 @@
 
     <ImageView
         android:id="@+id/checkoutimage"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingcheckout"
         app:layout_constraintStart_toStartOf="@+id/bookingcheckout"
         app:layout_constraintTop_toTopOf="@+id/bookingcheckout"
@@ -207,8 +212,9 @@
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingchild"
         app:layout_constraintStart_toStartOf="@+id/bookingchild"
         app:layout_constraintTop_toTopOf="@+id/bookingchild"
@@ -217,8 +223,9 @@
 
     <ImageView
         android:id="@+id/imageView27"
-        android:layout_width="47dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/bookingadult"
         app:layout_constraintStart_toEndOf="@+id/bookingchild"
         app:layout_constraintTop_toTopOf="@+id/bookingadult"
@@ -245,12 +252,12 @@
         android:id="@+id/textView10"
         android:layout_width="138dp"
         android:layout_height="52dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/btnbg"
+        android:fontFamily="@font/adamina"
         android:paddingTop="10dp"
         android:text="Pay"
         android:textAlignment="center"
-        android:fontFamily="@font/adamina"
         android:textColor="#EFE9E9"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"

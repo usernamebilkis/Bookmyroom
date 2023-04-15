@@ -31,7 +31,6 @@ class adapterclient(
         var benetfit = itemView.findViewById<TextView>(R.id.benetfitrecysample)
         var desc = itemView.findViewById<TextView>(R.id.descsample)
         var roomsize = itemView.findViewById<TextView>(R.id.roomsizesample)
-
         var imageadapterroom = itemView.findViewById<ImageView>(R.id.roomimagesample)
         var imageadapterbathroom = itemView.findViewById<ImageView>(R.id.samplebathroom)
         var cardviewdata = itemView.findViewById<CardView>(R.id.cardview)
@@ -81,10 +80,10 @@ class adapterclient(
             bundle.putString("benefit",datalist[position].benefit)
             bundle.putString("address",datalist[position].addressofhotel)
             bundle.putString("roomsize",datalist[position].roomsize)
-            bundle.putString("imageroom",datalist[position].image)
-            bundle.putString("imageroomgetdeatile",datalist[position].imageroom)
-            bundle.putString("imagebathroomgetdeatile",datalist[position].imagebathroom)
 
+            bundle.putString("imageroom", datalist[position].image.toString())
+            bundle.putString("imageroomgetdeatile", datalist[position].imageroom.toString())
+            bundle.putString("imagebathroomgetdeatile", datalist[position].imagebathroom.toString())
 
             val intent = Intent(context, Detailedpage::class.java)
             intent.putExtras(bundle)

@@ -4,8 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+ android:background="@drawable/bf"
     tools:context=".choosescreen">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#75FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="370dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/villaimage"
+                    android:layout_width="130dp"
+                    android:layout_height="136dp"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/villa"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/boloditacic"
+                    android:text="Villas "
+                    android:textColor="#CF0909"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/villaimage"
+                    app:layout_constraintStart_toStartOf="@+id/villaimage"
+                    app:layout_constraintTop_toBottomOf="@+id/villaimage" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/hoteimage"
+                    android:layout_width="130dp"
+                    android:layout_height="136dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="44dp"
+                    android:src="@drawable/hotel"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/bunglowimage"
+                    android:layout_width="130dp"
+                    android:layout_height="136dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/bungloes"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/villaimage"
+                    app:layout_constraintStart_toStartOf="@+id/villaimage"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/resortimage"
+                    android:layout_width="130dp"
+                    android:layout_height="136dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/restorn"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="@+id/hoteimage"
+                    app:layout_constraintStart_toStartOf="@+id/hoteimage"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/boloditacic"
+                    android:text="Hotels"
+                    android:textColor="#CF0909"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/hoteimage"
+                    app:layout_constraintStart_toStartOf="@+id/hoteimage"
+                    app:layout_constraintTop_toBottomOf="@+id/hoteimage" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/boloditacic"
+                    android:text="Bungalow"
+                    android:textColor="#CF0909"
+
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/bunglowimage"
+                    app:layout_constraintStart_toStartOf="@+id/bunglowimage"
+                    app:layout_constraintTop_toBottomOf="@+id/bunglowimage" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/boloditacic"
+
+                    android:text="Resort"
+                    android:textColor="#CF0909"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/resortimage"
+                    app:layout_constraintStart_toStartOf="@+id/resortimage"
+                    app:layout_constraintTop_toBottomOf="@+id/resortimage" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="310dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/regulatext"
+            android:text="Choose Your Stay"
+            android:paddingTop="7dp"
+            android:textAlignment="center"
+            android:textColor="#0E0101"
+            android:textSize="34sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Clicktheredetails">
+
+    <ImageView
+        android:id="@+id/imagephotodetails"
+        android:layout_width="378dp"
+        android:layout_height="222dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bf" />
+
+    <TextView
+        android:id="@+id/detailhotelnamerecydetail"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/detailbg"
+        android:fontFamily="@font/bold_text"
+        android:hint="Hotel Name"
+        android:textAlignment="center"
+        android:textColor="#231919"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagephotodetails" />
+
+    <TextView
+        android:id="@+id/hoteladdress"
+       android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regulatext"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Address"
+        android:background="@drawable/detailbg"
+        android:textAlignment="center"
+        android:textColor="#231919"
+        android:textSize="22sp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailhotelnamerecydetail" />
+</androidx.constraintlayout.widget.ConstraintLayout>

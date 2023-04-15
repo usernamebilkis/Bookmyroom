@@ -14,8 +14,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 
 class clientdata : AppCompatActivity() {
-
-
     lateinit var binding: ActivityClientdataBinding
     var imageUri: String? = null
     var uri: Uri? = null
@@ -31,7 +29,7 @@ class clientdata : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityClientdataBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        supportActionBar?.hide()
         val activityResultLaucher = registerForActivityResult<Intent, ActivityResult>(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -111,7 +109,7 @@ class clientdata : AppCompatActivity() {
             val uriTaskbath = taskSnapshot.storage.downloadUrl
             while (!uriTaskbath.isComplete);
             val urlImagebathroom = uriTaskbath.result
-            imageUriroom = urlImagebathroom.toString()
+            imageUribathroom = urlImagebathroom.toString()
             uploaddata()
 
         }.addOnFailureListener {
@@ -155,7 +153,7 @@ class clientdata : AppCompatActivity() {
             val urlImage = uriTask.result
             imageUri = urlImage.toString()
             uploaddata()
-            dialog.dismiss()
+
         }.addOnFailureListener {
             dialog.dismiss()
         }

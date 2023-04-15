@@ -15,6 +15,7 @@ class recycel : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityRecycelBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
         listofdata=ArrayList()
         adapter=clcikhere(this,listofdata)
         binding.recyclerView3.adapter=clcikhere(this,listofdata)
