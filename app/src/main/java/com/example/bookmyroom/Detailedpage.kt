@@ -1,68 +1,91 @@
 package com.example.bookmyroom
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.convertTo
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.bookmyroom.databinding.ActivityDetailedpageBinding
 import com.google.firebase.FirebaseApp
 
+
 class Detailedpage : AppCompatActivity() {
     lateinit var binding:ActivityDetailedpageBinding
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailedpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+
         FirebaseApp.initializeApp(this);
-//       binding.detailbuildimage.setImageResource(intent.getIntExtra("imageroom",0))
-//       binding.detailroomimage.setImageResource(intent.getIntExtra("imageroomgetdeatile",0))
-//       binding.detailbathroom.setImageResource(intent.getIntExtra("imagebathroomgetdeatile",0))
-//        binding.detailhotelname.text = intent.getStringExtra("hotelname")
-//        binding.detaildesc.text = intent.getStringExtra("description")
-//        binding.detailpricesize.text = intent.getStringExtra("price")
-//        binding.detailcity.text = intent.getStringExtra("city")
-//        binding.detaildefefit.text = intent.getStringExtra("benefit")
-//        binding.detailaddress.text = intent.getStringExtra("address")
-//        binding.detailroomsize.text = intent.getStringExtra("roomsize")
+
+        drawerLayout=findViewById(R.id.detaildrawer)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.share->{
+                    val sendIntent = Intent()
+                    sendIntent.action = Intent.ACTION_SEND
+                    sendIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom"
+                    )
+                    sendIntent.type = "text/plain"
+                    startActivity(sendIntent)
+                    return@setNavigationItemSelectedListener true
+
+                }
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
 
         val bundle = intent.extras
         if (bundle != null){
-            binding.detailhotelname.text= bundle.getString("hotelname")
-            binding.detaildesc.text=bundle.getString("description")
-            binding.detailpricesize.text=bundle.getString("price")
-            binding.detailcity.text=bundle.getString("city")
-            binding.detaildefefit.text=bundle.getString("benefit")
-            binding.detailaddress.text=bundle.getString("address")
-            binding.detailroomsize.text=bundle.getString("roomsize")
+            binding.detailhotelname.text = intent.getStringExtra("hotelname")
+        binding.detaildesc.text = intent.getStringExtra("description")
+        binding.detailpricesize.text = intent.getStringExtra("price")
+        binding.detailcity.text = intent.getStringExtra("city")
+        binding.detaildefefit.text = intent.getStringExtra("benefit")
+        binding.detailaddress.text = intent.getStringExtra("address")
+        binding.detailroomsize.text = intent.getStringExtra("roomsize")
 
-//            val oldImageView: String? = intent.getStringExtra("imageroom")
-////            image.setImageResource(oldImageView)
+              var data= bundle.getInt("imagebuilding",0)
+            val imageView = findViewById<ImageView>(R.id.detailbuildimage)
+           imageView.setImageResource(data)
 
-            var image = findViewById<ImageView>(R.id.detailbuildimage)
-            val Picture = getIntent().getIntExtra("imageroom",0)
-            image.setImageResource(Picture)
-
-            binding.detailbuildimage.setImageResource(bundle.getInt("imageroom",0))
-            binding.detailbuildimage.setImageResource(bundle.getInt("imageroom",0))
-            binding.detailroomimage.setImageResource(bundle.getInt("imageroomgetdeatile",0))
-            binding.detailbathroom.setImageResource(bundle.getInt("imagebathroomgetdeatile",0))
         }
-        binding.booknow.setOnClickListener {
 
+        binding.booknow.setOnClickListener {
             if (Global.guestlogin==1){
                 Toast.makeText(this,"RESIGRATERE YOUR SEIF FIRST",Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, Resigration::class.java))
-
             }else{
                 startActivity(Intent(this, booking::class.java))
-
             }
         }
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true }
+        return true
+    }
 
 
     }

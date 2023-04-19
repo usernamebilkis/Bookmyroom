@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bookmyroom.Clicktheredetails
 import com.example.bookmyroom.Detailedpage
 import com.example.bookmyroom.R
-import com.example.bookmyroom.clientdata
+
 
 data class manually(
         var image: Int,

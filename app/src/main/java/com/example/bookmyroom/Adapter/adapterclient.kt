@@ -1,7 +1,9 @@
 package com.example.bookmyroom.Adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +13,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.bookmyroom.DeatailedInterface
 import com.example.bookmyroom.Detailedpage
 import com.example.bookmyroom.R
-import com.example.bookmyroom.clientdata
+import com.example.bookmyroom.model.foronlytest
 import com.example.bookmyroom.model.homedataclass
+
+
 //private val deatiledInteface: DeatailedInterface
 class adapterclient(
     var context: Context,
@@ -45,6 +48,7 @@ class adapterclient(
         return datalist.size
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.hotelnameadapter.text = datalist[position].hotenmae
@@ -60,56 +64,26 @@ class adapterclient(
         Glide.with(context).load(datalist[position].imagebathroom).into(holder.imageadapterbathroom)
 
         holder.cardviewdata.setOnClickListener {
-//            val intent = Intent(context, Detailedpage::class.java)
-//            intent.putExtra("hotelname", datalist[position].hotenmae)
-//            intent.putExtra("description", datalist[position].description)
-//            intent.putExtra("price", datalist[position].price)
-//            intent.putExtra("city", datalist[position].city)
-//            intent.putExtra("benefit", datalist[position].benefit)
-//            intent.putExtra("address", datalist[position].addressofhotel)
-//            intent.putExtra("roomsize", datalist[position].roomsize)
-//
-//            intent.putExtra("imageroom",datalist[position].image)
-//            intent.putExtra("imageroomgetdeatile", datalist[position].imageroom)
-//            intent.putExtra("imagebathroomgetdeatile", datalist[position].imagebathroom)
-            val bundle = Bundle()
-            bundle.putString("hotelname",datalist[position].hotenmae)
-            bundle.putString("description", datalist[position].description)
-            bundle.putString("price", datalist[position].price)
-            bundle.putString("city",datalist[position].city)
-            bundle.putString("benefit",datalist[position].benefit)
-            bundle.putString("address",datalist[position].addressofhotel)
-            bundle.putString("roomsize",datalist[position].roomsize)
 
-            bundle.putString("imageroom", datalist[position].image.toString())
-            bundle.putString("imageroomgetdeatile", datalist[position].imageroom.toString())
-            bundle.putString("imagebathroomgetdeatile", datalist[position].imagebathroom.toString())
 
-            val intent = Intent(context, Detailedpage::class.java)
-            intent.putExtras(bundle)
+           var intent = Intent(context,Detailedpage::class.java)
+
+                      intent.putExtra("hotelname",datalist[position].hotenmae)
+            intent.putExtra("description", datalist[position].description)
+            intent.putExtra("price", datalist[position].price)
+            intent.putExtra("city",datalist[position].city)
+            intent.putExtra("benefit",datalist[position].benefit)
+            intent.putExtra("address",datalist[position].addressofhotel)
+            intent.putExtra("roomsize",datalist[position].roomsize)
+
+            intent.putExtra("imagebuilding",datalist[position].image)
+
+            intent.putExtra("imageroom",datalist[position].imageroom)
+            intent.putExtra("imagebathroom",datalist[position].imagebathroom)
             context.startActivity(intent)
         }
-//
-//        holder.cardviewdata.setOnClickListener {
-//            deatiledInteface.getdeatile(
-//                datalist[position].image,
-//                datalist[position].hotenmae,
-//                datalist[position].description,
-//                datalist[position].price,
-//                datalist[position].city,
-//                datalist[position].benefit,
-//                datalist[position].addressofhotel,
-//                datalist[position].roomsize,
-//                datalist[position].imageroom,
-//                datalist[position].imagebathroom
-//            )
-//        }
-
-
-
 
     }
-
     fun searchdatalist(searchList:List<homedataclass>) {
         datalist = searchList
         notifyDataSetChanged()

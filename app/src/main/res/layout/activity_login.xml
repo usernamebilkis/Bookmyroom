@@ -162,7 +162,7 @@
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/loginemail"
@@ -172,7 +172,7 @@
 
             <ImageView
                 android:id="@+id/imageView20"
-                android:layout_width="44dp"
+                android:layout_width="35dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/passwordemail"

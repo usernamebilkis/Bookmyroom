@@ -9,20 +9,22 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import com.example.bookmyroom.databinding.ActivityClientdataBinding
+import com.example.bookmyroom.model.foronlytest
 import com.example.bookmyroom.model.homedataclass
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 
 class clientdata : AppCompatActivity() {
     lateinit var binding: ActivityClientdataBinding
-    var imageUri: String? = null
-    var uri: Uri? = null
 
-    var imageUriroom: String? = null
+   var imageUri: String?=null
+    var uri: Uri? = null
+ var imageUriroom: String?=null
     var uriroom: Uri? = null
 
-
-    var imageUribathroom: String? = null
+    var imageUribathroom: String?=null
     var uribathroom: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +32,7 @@ class clientdata : AppCompatActivity() {
         binding = ActivityClientdataBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
         val activityResultLaucher = registerForActivityResult<Intent, ActivityResult>(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -40,7 +43,6 @@ class clientdata : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "No Image selected", Toast.LENGTH_LONG).show()
             }
-
         }
 
         val activityResultLaucherroom = registerForActivityResult<Intent, ActivityResult>(
@@ -159,7 +161,8 @@ class clientdata : AppCompatActivity() {
         }
     }
 
-    private fun uploaddata() {
+    private fun uploaddata()
+    {
         var hotelname = binding.hotelnameclient.text.toString()
         var price = binding.petrnight.text.toString()
         var city = binding.city.text.toString()
@@ -167,7 +170,6 @@ class clientdata : AppCompatActivity() {
         var addressofhotel = binding.addressofhotel.text.toString()
         var description = binding.Desctxt.text.toString()
         var roomsize = binding.roomsize.text.toString()
-
 
         var homedataclass = homedataclass(
             imageUri,

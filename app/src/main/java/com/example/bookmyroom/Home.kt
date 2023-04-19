@@ -1,21 +1,25 @@
 package com.example.bookmyroom
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Recycler
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.bookmyroom.Adapter.adapterclient
 import com.example.bookmyroom.databinding.ActivityHomeBinding
+import com.example.bookmyroom.model.foronlytest
 import com.example.bookmyroom.model.homedataclass
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 
-class Home : AppCompatActivity(){
+class Home : AppCompatActivity() {
     lateinit var binding:ActivityHomeBinding
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
  lateinit var  datalist:ArrayList<homedataclass>
  private lateinit var adapter:adapterclient
  var databaseReference:DatabaseReference?=null
@@ -24,14 +28,42 @@ class Home : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding=ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
-        binding.textView.setOnClickListener { startActivity(Intent(this,recycel::class.java)) }
 
+        drawerLayout=findViewById(R.id.drwaer)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.share->{
+                    val sendIntent = Intent()
+                    sendIntent.action = Intent.ACTION_SEND
+                    sendIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom"
+                    )
+                    sendIntent.type = "text/plain"
+                    startActivity(sendIntent)
+                     return@setNavigationItemSelectedListener true
+
+                }
+
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
+
+        binding.textView.setOnClickListener { startActivity(Intent(this,recycel::class.java)) }
         if (Global.fabbutton ==1){
-                binding.floatingActionButton.visibility=View.GONE
-        }else{
             binding.floatingActionButton.visibility=View.VISIBLE
             binding.floatingActionButton.setOnClickListener { startActivity(Intent(this,clientdata::class.java)) }
+        } else{
+            binding.floatingActionButton.visibility=View.GONE
         }
 
       binding.recy.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
@@ -55,6 +87,7 @@ class Home : AppCompatActivity(){
                     val dataclass=itemSnapshot.getValue(homedataclass::class.java)
                     if (dataclass != null){
                         datalist.add(dataclass)
+
                     }
                 }
                 adapter.notifyDataSetChanged()
@@ -75,8 +108,6 @@ class Home : AppCompatActivity(){
                 searchlist(newText)
            return true
             }
-
-
         })
     }
 
@@ -90,18 +121,15 @@ class Home : AppCompatActivity(){
         adapter.searchdatalist(searchlist)
     }
 
-//    override fun getdeatile(
-//        imagegetdeatile: String?,
-//        hotenmaegetdeatile: String?,
-//        descriptiongetdeatile: String?,
-//        pricegetdeatile: String?,
-//        citygetdeatile: String?,
-//        benefitgetdeatile: String?,
-//        addressofhotelgetdeatile: String?,
-//        roomsizegetdeatile: String?,
-//        imageroomgetdeatile: String?,
-//        imagebathroomgetdeatile: String?
-//    ) {
-//
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+      return true
+    }
+
+
+
+
+
 }

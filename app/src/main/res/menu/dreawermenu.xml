@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Contact Us"
+        android:icon="@drawable/baseline_help_24"
+        android:id="@+id/contach"
+        android:iconTint="@color/red"
+        />
+
+    <item android:title="Share "
+        android:icon="@drawable/baseline_share_24"
+        android:iconTint="@color/red"
+        android:id="@+id/share"
+        />
+
+
+
+</menu>

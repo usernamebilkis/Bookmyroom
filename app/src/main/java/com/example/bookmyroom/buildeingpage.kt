@@ -3,8 +3,11 @@ package com.example.bookmyroom
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.bookmyroom.Adapter.buildingadapter
@@ -18,20 +21,35 @@ class buildeingpage : AppCompatActivity() {
     lateinit var binding:ActivityBuildeingpageBinding
     lateinit var  datalist:ArrayList<homedataclass>
     private lateinit var adapter: buildingadapter
-
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
     var databaseReference: DatabaseReference?=null
     var eventListener : ValueEventListener?= null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityBuildeingpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+        drawerLayout=findViewById(R.id.buildingdrawer)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
 
         if (Global.fabbutton ==1){
-            binding.floatingActionButton2.visibility= View.GONE
-        }else{
             binding.floatingActionButton2.visibility= View.VISIBLE
             binding.floatingActionButton2.setOnClickListener { startActivity(Intent(this,bewlogousclientdata::class.java)) }
+        }else{
+            binding.floatingActionButton2.visibility= View.GONE
         }
 
         binding.buildingrecy.layoutManager= StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -89,5 +107,12 @@ class buildeingpage : AppCompatActivity() {
         })
 
         binding.textView.setOnClickListener { startActivity(Intent(this,recycel::class.java)) }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return true
     }
     }

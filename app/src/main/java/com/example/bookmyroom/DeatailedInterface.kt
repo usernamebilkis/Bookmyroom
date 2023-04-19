@@ -3,7 +3,7 @@ package com.example.bookmyroom
 interface DeatailedInterface {
 
     fun getdeatile(
-        imagegetdeatile:String?=null,
+        imagegetdeatile:Int,
          hotenmaegetdeatile:String?=null,
          descriptiongetdeatile:String?=null,
          pricegetdeatile:String?=null,

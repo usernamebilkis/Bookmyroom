@@ -3,8 +3,11 @@ package com.example.bookmyroom
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.bookmyroom.Adapter.adapterclient
@@ -18,7 +21,8 @@ class villaspagfe : AppCompatActivity() {
     lateinit var binding: ActivityVillaspagfeBinding
     lateinit var datalist: ArrayList<homedataclass>
     private lateinit var adapter: villasadapter
-
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
     var databaseReference: DatabaseReference? = null
     var eventListener: ValueEventListener? = null
 
@@ -26,11 +30,36 @@ class villaspagfe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityVillaspagfeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        drawerLayout=findViewById(R.id.villapagedrawer)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        supportActionBar?.hide()
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.share->{
+                    val sendIntent = Intent()
+                    sendIntent.action = Intent.ACTION_SEND
+                    sendIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom"
+                    )
+                    sendIntent.type = "text/plain"
+                    startActivity(sendIntent)
+                    return@setNavigationItemSelectedListener true
+
+                }
+
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
+
         if (Global.fabbutton ==1){
-            binding.floatingActionButton4.visibility= View.GONE
-        }else{
             binding.floatingActionButton4.visibility= View.VISIBLE
             binding.floatingActionButton4.setOnClickListener {
                 startActivity(
@@ -40,6 +69,8 @@ class villaspagfe : AppCompatActivity() {
                     )
                 )
             }
+        }else{
+            binding.floatingActionButton4.visibility= View.GONE
 
         }
 
@@ -96,5 +127,12 @@ class villaspagfe : AppCompatActivity() {
         })
 
         binding.textView.setOnClickListener { startActivity(Intent(this,recycel::class.java)) }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return true
     }
 }

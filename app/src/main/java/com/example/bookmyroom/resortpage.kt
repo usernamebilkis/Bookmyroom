@@ -3,8 +3,11 @@ package com.example.bookmyroom
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.bookmyroom.Adapter.resortadpter
@@ -18,7 +21,8 @@ class resortpage : AppCompatActivity() {
     lateinit var binding:ActivityResortpageBinding
     lateinit var  datalist:ArrayList<homedataclass>
     private lateinit var adapter: resortadpter
-
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
     var databaseReference: DatabaseReference?=null
     var eventListener : ValueEventListener?= null
 
@@ -26,14 +30,28 @@ class resortpage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityResortpageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+        drawerLayout=findViewById(R.id.resortdrawer)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
 
         if (Global.fabbutton ==1){
-            binding.floatingActionButton3.visibility= View.GONE
-        }else{
             binding.floatingActionButton3.visibility= View.VISIBLE
-            binding.floatingActionButton3.setOnClickListener { startActivity(Intent(this,resortclientdata::class.java)) }
-        }
+            binding.floatingActionButton3.setOnClickListener { startActivity(Intent(this,resortclientdata::class.java))}
+        }else{
+                binding.floatingActionButton3.visibility= View.GONE
+            }
 
         binding.recyresort.layoutManager= StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         val builder = AlertDialog.Builder(this)
@@ -87,6 +105,13 @@ class resortpage : AppCompatActivity() {
         })
 
         binding.textView.setOnClickListener { startActivity(Intent(this,recycel::class.java)) }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return true
     }
 
     }

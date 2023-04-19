@@ -15,7 +15,7 @@ import com.google.firebase.storage.FirebaseStorage
 
 class resortclientdata : AppCompatActivity() {
     lateinit var binding:ActivityResortclientdataBinding
-    var imageUriresort: String? = null
+    var imageUriresort:String? = null
     var uriresort: Uri? = null
 
     var imageUriroomresort: String? = null

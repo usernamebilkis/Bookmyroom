@@ -49,6 +49,7 @@ class otp : AppCompatActivity() {
 
             if (typeotp.isNotEmpty()) {
                 if (typeotp.length == 6) {
+                    binding.verfitybtn.setBackgroundResource(R.drawable.sucessbtn)
                     val credential: PhoneAuthCredential =
                         PhoneAuthProvider.getCredential(otp, typeotp)
                     binding.progressBar2.visibility = View.VISIBLE

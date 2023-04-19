@@ -15,7 +15,7 @@ import com.google.firebase.storage.FirebaseStorage
 
 class villasclientfdata : AppCompatActivity() {
     lateinit var binding:ActivityVillasclientfdataBinding
-        var imageUriVillas: String? = null
+        var imageUriVillas:String? = null
     var uriVillas: Uri? = null
 
     var imageUriroomVillas: String? = null
