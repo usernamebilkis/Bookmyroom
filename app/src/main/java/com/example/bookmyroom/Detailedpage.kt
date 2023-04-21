@@ -11,14 +11,19 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.convertTo
 import androidx.drawerlayout.widget.DrawerLayout
+import com.bumptech.glide.Glide
 import com.example.bookmyroom.databinding.ActivityDetailedpageBinding
 import com.google.firebase.FirebaseApp
 
 
 class Detailedpage : AppCompatActivity() {
-    lateinit var binding:ActivityDetailedpageBinding
+    var imageUrl =  ""
+    var imageurlroom=""
+
+    lateinit var binding: ActivityDetailedpageBinding
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,66 +32,71 @@ class Detailedpage : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this);
 
-        drawerLayout=findViewById(R.id.detaildrawer)
-        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout = findViewById(R.id.detaildrawer)
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.navi.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.contach->{
-                    startActivity(Intent(this,contactus::class.java))
+            when (it.itemId) {
+                R.id.contach -> {
+                    startActivity(Intent(this, contactus::class.java))
                     return@setNavigationItemSelectedListener true
                 }
-                R.id.share->{
+                R.id.share -> {
                     val sendIntent = Intent()
                     sendIntent.action = Intent.ACTION_SEND
-                    sendIntent.putExtra(
-                        Intent.EXTRA_TEXT,
-                        "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom"
-                    )
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom")
                     sendIntent.type = "text/plain"
                     startActivity(sendIntent)
                     return@setNavigationItemSelectedListener true
-
                 }
-                else -> { return@setNavigationItemSelectedListener true}
+                else -> {
+                    return@setNavigationItemSelectedListener true
+                }
             }
         }
 
         val bundle = intent.extras
-        if (bundle != null){
-            binding.detailhotelname.text = intent.getStringExtra("hotelname")
-        binding.detaildesc.text = intent.getStringExtra("description")
-        binding.detailpricesize.text = intent.getStringExtra("price")
-        binding.detailcity.text = intent.getStringExtra("city")
-        binding.detaildefefit.text = intent.getStringExtra("benefit")
-        binding.detailaddress.text = intent.getStringExtra("address")
-        binding.detailroomsize.text = intent.getStringExtra("roomsize")
+        if (bundle != null) {
+            binding.detailhotelname.text = bundle.getString("hotelname")
 
-              var data= bundle.getInt("imagebuilding",0)
-            val imageView = findViewById<ImageView>(R.id.detailbuildimage)
-           imageView.setImageResource(data)
+            binding.detaildesc.text = bundle.getString("description")
+            binding.detailpricesize.text = bundle.getString("price")
+            binding.detailcity.text = bundle.getString("city")
+            binding.detaildefefit.text = bundle.getString("benefit")
+            binding.detailaddress.text = bundle.getString("address")
+            binding.detailroomsize.text = bundle.getString("roomsize")
+            imageUrl=bundle.getString("imagebuilding")!!
+            Glide.with(this).load(bundle.getString("imagebuilding")).into(binding.detailbuildimage)
+
+            imageurlroom=bundle.getString("imageroom")!!
+            Glide.with(this).load(bundle.getString("imageroom")).into(binding.detailroomimage)
 
         }
 
         binding.booknow.setOnClickListener {
-            if (Global.guestlogin==1){
-                Toast.makeText(this,"RESIGRATERE YOUR SEIF FIRST",Toast.LENGTH_LONG).show()
+            if (Global.guestlogin == 1) {
+                binding.booknow.setBackgroundResource(R.drawable.sucessbtn)
+                binding.booknow.setTextColor(getResources().getColor(R.color.black))
+                Toast.makeText(this, "RESIGRATERE YOUR SEIF FIRST", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, Resigration::class.java))
-            }else{
+            } else {
+                binding.booknow.setBackgroundResource(R.drawable.sucessbtn)
+                binding.booknow.setTextColor(getResources().getColor(R.color.black))
                 startActivity(Intent(this, booking::class.java))
             }
         }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (toggle.onOptionsItemSelected(item)){
-            return true }
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
         return true
     }
 
 
-    }
+}
 

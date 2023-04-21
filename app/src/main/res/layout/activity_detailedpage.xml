@@ -20,14 +20,14 @@
         <TextView
             android:id="@+id/detailhotelname"
             android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:padding="2dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/detailbg"
             android:fontFamily="@font/bold_text"
             android:hint="Hotel Name"
-            android:padding="2dp"
             android:textAlignment="center"
             android:textColor="#231919"
             android:textSize="25sp"
@@ -201,40 +201,28 @@
         <ImageView
             android:id="@+id/detailroomimage"
             android:layout_width="0dp"
-            android:layout_height="202dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detaildesc"
             app:srcCompat="@drawable/romsecond" />
 
-        <ImageView
-            android:id="@+id/detailbathroom"
-            android:layout_width="0dp"
-            android:layout_height="202dp"
-            android:layout_marginBottom="8dp"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailroomimage"
-            app:srcCompat="@drawable/romsecond">
-
-        </ImageView>
-
         <TextView
             android:id="@+id/booknow"
             android:layout_width="0dp"
-            android:layout_height="38sp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/btnbg"
             android:fontFamily="@font/adamina"
-            android:paddingTop="7dp"
+            android:paddingTop="2dp"
+            android:padding="5dp"
             android:text="Book Now"
             android:textAlignment="center"
             android:textColor="#EFE9E9"
@@ -242,13 +230,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailbathroom" />
+            app:layout_constraintTop_toBottomOf="@+id/detailroomimage" />
 
         <ImageView
             android:id="@+id/detailbuildimage"
             android:layout_width="397dp"
-            android:layout_height="216dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -263,6 +254,7 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/dreawermenu"
         android:id="@+id/navi"
+        app:itemIconTint="@color/red"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         ></com.google.android.material.navigation.NavigationView>

@@ -2,8 +2,10 @@ package com.example.bookmyroom
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
-import android.net.ConnectivityManager
+import android.net.*
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +14,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import com.example.bookmyroom.databinding.ActivityResigrationBinding
 import com.example.bookmyroom.model.Resigrationdataclass
@@ -28,8 +31,6 @@ class Resigration : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     lateinit var number: String
 
-    private lateinit var connectivityObservation: ConnetivityObservation
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResigrationBinding.inflate(layoutInflater)
@@ -38,27 +39,7 @@ class Resigration : AppCompatActivity() {
         supportActionBar?.hide()
 
 
-//        var infalktwe =LayoutInflater.from(this).inflate(R.layout.network,null)
-//        var imageofwifi=infalktwe.findViewById<ImageView>(R.id.wififimage)
-//        var imageofwifians=infalktwe.findViewById<TextView>(R.id.connectans)
-//
-//            var connectionManger = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-//            var activenetwork =connectionManger.activeNetworkInfo
-//            var isnotConnected = activenetwork?.isConnectedOrConnecting
-//            if (isnotConnected == true){
-//                        var alertdialog = AlertDialog.Builder(this)
-//        alertdialog.setView(infalktwe)
-//                imageofwifi.setImageResource(R.drawable.baseline_wifi_off_24)
-//                imageofwifians.setText("NOT CONNECTED")
-//        alertdialog.setPositiveButton("OK"){
-//            dialog,_->
-//            dialog.dismiss()
-//
-//        }
-//                alertdialog.show()
-//            }
-
-
+        checkConnectivity()
 
    binding.guest.setOnClickListener {
         Global.guestlogin=1
@@ -93,6 +74,7 @@ class Resigration : AppCompatActivity() {
 
                     binding.progressBar3.visibility = View.VISIBLE
                 binding.resgiterbtn.setBackgroundResource(R.drawable.sucessbtn)
+                    binding.resgiterbtn.setTextColor(getResources().getColor(R.color.black))
                     val options = PhoneAuthOptions.newBuilder(auth)
                         .setPhoneNumber(number)       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
@@ -174,4 +156,36 @@ class Resigration : AppCompatActivity() {
         }
     }
 
+    private fun checkConnectivity() {
+        val manager = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = manager.activeNetworkInfo
+
+        if (null == activeNetwork) {
+            val dialogBuilder = AlertDialog.Builder(this)
+            val intent = Intent(this, MainActivity::class.java)
+            // set message of alert dialog
+            dialogBuilder.setMessage("Make sure that WI-FI or mobile data is turned on, then try again")
+                // if the dialog is cancelable
+                .setCancelable(false)
+                // positive button text and action
+                .setPositiveButton("Retry", DialogInterface.OnClickListener { dialog, id ->
+                    recreate()
+                })
+                // negative button text and action
+                .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+                 dialog.dismiss()
+                })
+
+            // create dialog box
+            val alert = dialogBuilder.create()
+            // set title for alert dialog box
+            alert.setTitle("No Internet Connection")
+            alert.setIcon(R.drawable.baseline_wifi_off_24)
+            // show alert dialog
+            alert.show()
+        }
+    }
+
+
 }
+

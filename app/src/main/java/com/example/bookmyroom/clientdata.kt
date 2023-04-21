@@ -24,8 +24,7 @@ class clientdata : AppCompatActivity() {
  var imageUriroom: String?=null
     var uriroom: Uri? = null
 
-    var imageUribathroom: String?=null
-    var uribathroom: Uri? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,19 +58,6 @@ class clientdata : AppCompatActivity() {
         }
 
 
-        val activityResultLaucherbathroom = registerForActivityResult<Intent, ActivityResult>(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val databathroom = result.data
-                uribathroom= databathroom!!.data
-                binding.recyclerView2.setImageURI(uribathroom)
-            } else {
-                Toast.makeText(this, "No Image selected", Toast.LENGTH_LONG).show()
-            }
-
-        }
-
         binding.buildcamera.setOnClickListener {
             val photopicker = Intent(Intent.ACTION_PICK)
             photopicker.type = "image/*"
@@ -85,39 +71,15 @@ class clientdata : AppCompatActivity() {
         }
 
 
-        binding.imagebathroomn.setOnClickListener {
-            val photopickerbathroom = Intent(Intent.ACTION_PICK)
-            photopickerbathroom.type ="image/*"
-            activityResultLaucherbathroom.launch(photopickerbathroom)
-        }
+
 
         binding.submitbtn.setOnClickListener {
             savedata()
             roomimagefun()
-            bathimage()
         }
     }
 
-    private fun bathimage() {
-        val storagereferncebath = FirebaseStorage.getInstance().reference.child("Roombath Image")
-            .child(uribathroom!!.lastPathSegment!!)
-        val builder = AlertDialog.Builder(this)
-        builder.setCancelable(false)
-        builder.setView(R.layout.loging)
-        val dialog = builder.create()
-        dialog.show()
 
-        storagereferncebath.putFile(uribathroom!!).addOnSuccessListener { taskSnapshot ->
-            val uriTaskbath = taskSnapshot.storage.downloadUrl
-            while (!uriTaskbath.isComplete);
-            val urlImagebathroom = uriTaskbath.result
-            imageUribathroom = urlImagebathroom.toString()
-            uploaddata()
-
-        }.addOnFailureListener {
-            dialog.dismiss()
-        }
-    }
 
     private fun roomimagefun() {
         val storagereferncerroom = FirebaseStorage.getInstance().reference.child("Room Image")
@@ -181,7 +143,6 @@ class clientdata : AppCompatActivity() {
             addressofhotel,
             roomsize,
             imageUriroom,
-            imageUribathroom
         )
         FirebaseDatabase.getInstance().getReference("Clientdata").child(hotelname)
             .setValue(homedataclass).addOnCompleteListener { task ->

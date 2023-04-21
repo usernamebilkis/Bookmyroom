@@ -1,7 +1,11 @@
 package com.example.bookmyroom
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookmyroom.Adapter.clcikhere
 import com.example.bookmyroom.Adapter.manually
@@ -11,11 +15,40 @@ class recycel : AppCompatActivity() {
     lateinit var  binding:ActivityRecycelBinding
     lateinit var listofdata:ArrayList<manually>
     lateinit var adapter:clcikhere
+    lateinit var toggle: ActionBarDrawerToggle
+    lateinit var drawerLayout: DrawerLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityRecycelBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
+
+        drawerLayout=findViewById(R.id.drawerofrecy)
+        toggle= ActionBarDrawerToggle(this, drawerLayout,R.string.open,R.string.close)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navi.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.contach->{
+                    startActivity(Intent(this,contactus::class.java))
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.share->{
+                    val sendIntent = Intent()
+                    sendIntent.action = Intent.ACTION_SEND
+                    sendIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        "Check out the App at: https://play.google.com/store/apps/details?id=$ com.example.bookmyroom"
+                    )
+                    sendIntent.type = "text/plain"
+                    startActivity(sendIntent)
+                    return@setNavigationItemSelectedListener true
+
+                }
+                else -> { return@setNavigationItemSelectedListener true}
+            }
+        }
         listofdata=ArrayList()
         adapter=clcikhere(this,listofdata)
         binding.recyclerView3.adapter=clcikhere(this,listofdata)
@@ -30,5 +63,11 @@ class recycel : AppCompatActivity() {
         adapter.notifyDataSetChanged()
 
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return true
     }
 }

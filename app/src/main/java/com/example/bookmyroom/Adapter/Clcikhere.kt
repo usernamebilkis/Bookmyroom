@@ -46,15 +46,10 @@ class clcikhere(var context: Context, var list: ArrayList<manually>) :
         holder.address.text=currentitem.address
 
         holder.cardview.setOnClickListener {
-            val bundle = Bundle()
-
-            bundle.putString("hotelname",list[position].hotelname)
-            bundle.putString("hoteititle",list[position].address)
-            bundle.putString("hotelimage", list[position].image.toString())
-
-
             val intent = Intent(context,Clicktheredetails::class.java)
-            intent.putExtras(bundle)
+            intent.putExtra("hotelname",list[holder.adapterPosition].hotelname)
+            intent.putExtra("hoteititle",list[holder.adapterPosition].address)
+            intent.putExtra("hotelimage", list[holder.adapterPosition].image)
             context.startActivity(intent)
         }
     }

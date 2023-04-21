@@ -25,7 +25,7 @@ class adapterclient(
     var datalist: List<homedataclass>,
 
 ) : RecyclerView.Adapter<adapterclient.ViewHolder>() {
-    class ViewHolder(var itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageadapter = itemView.findViewById<ImageView>(R.id.imagebuilding)
         var hotelnameadapter = itemView.findViewById<TextView>(R.id.hotelname)
         var address = itemView.findViewById<TextView>(R.id.addres)
@@ -61,25 +61,21 @@ class adapterclient(
 
         Glide.with(context).load(datalist[position].image).into(holder.imageadapter)
         Glide.with(context).load(datalist[position].imageroom).into(holder.imageadapterroom)
-        Glide.with(context).load(datalist[position].imagebathroom).into(holder.imageadapterbathroom)
+
 
         holder.cardviewdata.setOnClickListener {
-
-
            var intent = Intent(context,Detailedpage::class.java)
+                      intent.putExtra("hotelname",datalist[holder.adapterPosition].hotenmae)
+            intent.putExtra("description", datalist[holder.adapterPosition].description)
+            intent.putExtra("price", datalist[holder.adapterPosition].price)
+            intent.putExtra("city",datalist[holder.adapterPosition].city)
+            intent.putExtra("benefit",datalist[holder.adapterPosition].benefit)
+            intent.putExtra("address",datalist[holder.adapterPosition].addressofhotel)
+            intent.putExtra("roomsize",datalist[holder.adapterPosition].roomsize)
 
-                      intent.putExtra("hotelname",datalist[position].hotenmae)
-            intent.putExtra("description", datalist[position].description)
-            intent.putExtra("price", datalist[position].price)
-            intent.putExtra("city",datalist[position].city)
-            intent.putExtra("benefit",datalist[position].benefit)
-            intent.putExtra("address",datalist[position].addressofhotel)
-            intent.putExtra("roomsize",datalist[position].roomsize)
+            intent.putExtra("imagebuilding",datalist[holder.adapterPosition].image)
+            intent.putExtra("imageroom",datalist[holder.adapterPosition].imageroom)
 
-            intent.putExtra("imagebuilding",datalist[position].image)
-
-            intent.putExtra("imageroom",datalist[position].imageroom)
-            intent.putExtra("imagebathroom",datalist[position].imagebathroom)
             context.startActivity(intent)
         }
 

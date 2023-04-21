@@ -21,8 +21,7 @@ class bewlogousclientdata : AppCompatActivity() {
     var imageUriroombewlogus: String? = null
     var uriroombewlogus: Uri? = null
 
-    var imageUribathroombewlogus: String? = null
-    var uribathroombewlogus: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityBewlogousclientdataBinding.inflate(layoutInflater)
@@ -56,18 +55,7 @@ class bewlogousclientdata : AppCompatActivity() {
         }
 
 
-        val activityResultLaucherbathroom = registerForActivityResult<Intent, ActivityResult>(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val databathroom = result.data
-                uribathroombewlogus= databathroom!!.data
-                binding.recyclerView2.setImageURI(uribathroombewlogus)
-            } else {
-                Toast.makeText(this, "No Image selected", Toast.LENGTH_LONG).show()
-            }
 
-        }
 
         binding.buildcamera.setOnClickListener {
             val photopicker = Intent(Intent.ACTION_PICK)
@@ -82,16 +70,12 @@ class bewlogousclientdata : AppCompatActivity() {
         }
 
 
-        binding.imagebathroomn.setOnClickListener {
-            val photopickerbathroom = Intent(Intent.ACTION_PICK)
-            photopickerbathroom.type ="image/*"
-            activityResultLaucherbathroom.launch(photopickerbathroom)
-        }
+
 
         binding.submitbtn.setOnClickListener {
             savedata()
             roomimagefun()
-            bathimage()
+
         }
 
     }
@@ -158,7 +142,6 @@ class bewlogousclientdata : AppCompatActivity() {
             addressofhotel,
             roomsize,
             imageUriroombewlogus,
-            imageUribathroombewlogus
         )
         FirebaseDatabase.getInstance().getReference("ClientdataBewlogus").child(hotelname)
             .setValue(homedataclass).addOnCompleteListener { task ->
@@ -172,24 +155,5 @@ class bewlogousclientdata : AppCompatActivity() {
             }
     }
 
-    private fun bathimage() {
-        val storagereferncebath = FirebaseStorage.getInstance().reference.child("BewlogusRoombath Image")
-            .child(uribathroombewlogus!!.lastPathSegment!!)
-        val builder = AlertDialog.Builder(this)
-        builder.setCancelable(false)
-        builder.setView(R.layout.loging)
-        val dialog = builder.create()
-        dialog.show()
 
-        storagereferncebath.putFile(uribathroombewlogus!!).addOnSuccessListener { taskSnapshot ->
-            val uriTaskbath = taskSnapshot.storage.downloadUrl
-            while (!uriTaskbath.isComplete);
-            val urlImagebathroom = uriTaskbath.result
-            imageUribathroombewlogus = urlImagebathroom.toString()
-            uploaddata()
-
-        }.addOnFailureListener {
-            dialog.dismiss()
-        }
-    }
 }

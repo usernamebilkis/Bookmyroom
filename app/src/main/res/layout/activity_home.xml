@@ -154,6 +154,7 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/dreawermenu"
         android:id="@+id/navi"
+        app:itemIconTint="@color/red"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         >

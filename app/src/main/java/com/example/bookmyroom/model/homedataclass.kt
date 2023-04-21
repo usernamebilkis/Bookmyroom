@@ -10,7 +10,7 @@ data class homedataclass(
     var addressofhotel:String?=null,
     var roomsize:String?=null,
     var imageroom: String? =null,
-    var imagebathroom: String? =null
+
 
 
 )

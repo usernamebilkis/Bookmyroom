@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Clicktheredetails">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/imagephotodetails"
@@ -20,13 +25,14 @@
     <TextView
         android:id="@+id/detailhotelnamerecydetail"
         android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/detailbg"
         android:fontFamily="@font/bold_text"
         android:hint="Hotel Name"
+        android:padding="2dp"
         android:textAlignment="center"
         android:textColor="#231919"
         android:textSize="25sp"
@@ -36,19 +42,67 @@
 
     <TextView
         android:id="@+id/hoteladdress"
-       android:layout_width="0dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/regulatext"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Address"
         android:background="@drawable/detailbg"
+        android:fontFamily="@font/regulatext"
+        android:hint="Address"
+        android:padding="2dp"
+        android:text="TextView"
         android:textAlignment="center"
         android:textColor="#231919"
         android:textSize="22sp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailhotelnamerecydetail" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/detailbg"
+        android:inputType="textMultiLine"
+        android:padding="2dp"
+        android:text="Free WiFi \n Free parking\nFamily rooms"
+        android:textAlignment="center"
+        android:fontFamily="@font/regulatext"
+        android:textColor="#231919"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hoteladdress" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/regulatext"
+            android:background="@drawable/detailbg"
+            android:text="Centrally located in Navi Mumbai, Yogi Executive, Navi Mumbai offers a rooftop pool and modern air-conditioned rooms with flat screen TV and satellite channels.
+The spacious guest rooms at Hotel Yogi are equipped with DVD player, telephone, minibar, safe and hairdryer. A work desk, tea/coffee maker and ironing facilities are also available.
+
+Hotel Yogi Executive, Navi Mumbai has an on-site restaurant serving international cuisine. A bar and 24-hour room service are also available.
+
+Guests can relax in the lounge or by the pool area, and benefit from the hot tub.
+
+Yogi Executive, Navi Mumbai is a 45-minute drive from Chhatrapati Shivaji International Airport and 1.5 km away from Fantasia Shopping Mall."
+            android:textAlignment="center"
+            android:textColor="#231919"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

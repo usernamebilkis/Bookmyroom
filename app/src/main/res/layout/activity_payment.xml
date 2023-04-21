@@ -75,7 +75,7 @@
     <ImageView
         android:id="@+id/imageView35"
         android:layout_width="415dp"
-android:visibility="gone"
+        android:visibility="gone"
         android:layout_height="520dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

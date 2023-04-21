@@ -124,6 +124,7 @@
         android:layout_height="match_parent"
         app:headerLayout="@layout/header"
         app:menu="@menu/dreawermenu"
+        app:itemIconTint="@color/red"
         android:id="@+id/navi"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"

@@ -11,8 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="396dp"
@@ -278,10 +276,10 @@
         app:headerLayout="@layout/header"
         app:menu="@menu/dreawermenu"
         android:id="@+id/navi"
+        app:itemIconTint="@color/red"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         >
-
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

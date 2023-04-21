@@ -21,8 +21,7 @@ class resortclientdata : AppCompatActivity() {
     var imageUriroomresort: String? = null
     var uriroomresort: Uri? = null
 
-    var imageUribathroomresort: String? = null
-    var uribathroomresort: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityResortclientdataBinding.inflate(layoutInflater)
@@ -55,18 +54,6 @@ class resortclientdata : AppCompatActivity() {
         }
 
 
-        val activityResultLaucherbathroom = registerForActivityResult<Intent, ActivityResult>(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val databathroom = result.data
-                uribathroomresort= databathroom!!.data
-                binding.recyclerView2.setImageURI(uribathroomresort)
-            } else {
-                Toast.makeText(this, "No Image selected", Toast.LENGTH_LONG).show()
-            }
-
-        }
 
         binding.buildcamera.setOnClickListener {
             val photopicker = Intent(Intent.ACTION_PICK)
@@ -81,22 +68,16 @@ class resortclientdata : AppCompatActivity() {
         }
 
 
-        binding.imagebathroomn.setOnClickListener {
-            val photopickerbathroom = Intent(Intent.ACTION_PICK)
-            photopickerbathroom.type ="image/*"
-            activityResultLaucherbathroom.launch(photopickerbathroom)
-        }
-
         binding.submitbtn.setOnClickListener {
             savedata()
             roomimagefun()
-            bathimage()
+
         }
 
     }
 
     private fun savedata() {
-        val storagerefernce = FirebaseStorage.getInstance().reference.child("Buildingresort Image")
+        val storagerefernce = FirebaseStorage.getInstance().reference.child("resortfornt Image")
             .child(uriresort!!.lastPathSegment!!)
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(false)
@@ -136,7 +117,7 @@ class resortclientdata : AppCompatActivity() {
             addressofhotel,
             roomsize,
             imageUriroomresort,
-            imageUribathroomresort
+
         )
         FirebaseDatabase.getInstance().getReference("Clientdataresort").child(hotelname)
             .setValue(homedataclass).addOnCompleteListener { task ->
@@ -172,26 +153,8 @@ class resortclientdata : AppCompatActivity() {
         }
     }
 
-    private fun bathimage() {
-        val storagereferncebath = FirebaseStorage.getInstance().reference.child("Roombathresort Image")
-            .child(uribathroomresort!!.lastPathSegment!!)
-        val builder = AlertDialog.Builder(this)
-        builder.setCancelable(false)
-        builder.setView(R.layout.loging)
-        val dialog = builder.create()
-        dialog.show()
 
-        storagereferncebath.putFile(uribathroomresort!!).addOnSuccessListener { taskSnapshot ->
-            val uriTaskbath = taskSnapshot.storage.downloadUrl
-            while (!uriTaskbath.isComplete);
-            val urlImagebathroom = uriTaskbath.result
-            imageUribathroomresort = urlImagebathroom.toString()
-            uploaddata()
-
-        }.addOnFailureListener {
-            dialog.dismiss()
-        }
     }
 
 
-}
+

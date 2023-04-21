@@ -50,25 +50,34 @@ class buildingadapter(var context: Context, var listofbuildingt:List<homedatacla
 
         Glide.with(context).load(listofbuildingt[position].image).into(holder.imageadapter)
         Glide.with(context).load(listofbuildingt[position].imageroom).into(holder.imageadapterroom)
-        Glide.with(context).load(listofbuildingt[position].imagebathroom).into(holder.imageadapterbathroom)
+
 
 
         holder.cardviewdata.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("hotelname",listofbuildingt[position].hotenmae)
-            bundle.putString("description", listofbuildingt[position].description)
-            bundle.putString("price", listofbuildingt[position].price)
-            bundle.putString("city",listofbuildingt[position].city)
-            bundle.putString("benefit",listofbuildingt[position].benefit)
-            bundle.putString("address",listofbuildingt[position].addressofhotel)
-            bundle.putString("roomsize",listofbuildingt[position].roomsize)
-
-            bundle.putString("imageroom", listofbuildingt[position].image.toString())
-            bundle.putString("imageroomgetdeatile", listofbuildingt[position].imageroom.toString())
-            bundle.putString("imagebathroomgetdeatile", listofbuildingt[position].imagebathroom.toString())
+//            val bundle = Bundle()
+//            bundle.putString("hotelname",listofbuildingt[holder.adapterPosition].hotenmae)
+//            bundle.putString("description", listofbuildingt[holder.adapterPosition].description)
+//            bundle.putString("price", listofbuildingt[holder.adapterPosition].price)
+//            bundle.putString("city",listofbuildingt[holder.adapterPosition].city)
+//            bundle.putString("benefit",listofbuildingt[holder.adapterPosition].benefit)
+//            bundle.putString("address",listofbuildingt[holder.adapterPosition].addressofhotel)
+//            bundle.putString("roomsize",listofbuildingt[holder.adapterPosition].roomsize)
+//
+//            bundle.putString("imagebuilding", listofbuildingt[holder.adapterPosition].image)
+//            bundle.putString("imageroom", listofbuildingt[holder.adapterPosition].imageroom)
+//            bundle.putString("imagebathroom", listofbuildingt[holder.adapterPosition].imagebathroom)
 
             val intent = Intent(context, Detailedpage::class.java)
-            intent.putExtras(bundle)
+            intent.putExtra("hotelname",listofbuildingt[holder.adapterPosition].hotenmae)
+            intent.putExtra("description", listofbuildingt[holder.adapterPosition].description)
+            intent.putExtra("price", listofbuildingt[holder.adapterPosition].price)
+            intent.putExtra("city",listofbuildingt[holder.adapterPosition].city)
+            intent.putExtra("benefit",listofbuildingt[holder.adapterPosition].benefit)
+            intent.putExtra("address",listofbuildingt[holder.adapterPosition].addressofhotel)
+            intent.putExtra("roomsize",listofbuildingt[holder.adapterPosition].roomsize)
+            intent.putExtra("imagebuilding",listofbuildingt[holder.adapterPosition].image)
+            intent.putExtra("imageroom",listofbuildingt[holder.adapterPosition].imageroom)
+
             context.startActivity(intent)
         }
     }

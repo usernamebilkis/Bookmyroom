@@ -50,24 +50,24 @@ class resortadpter(var context: Context, var list: List<homedataclass>):Recycler
 
         Glide.with(context).load(list[position].image).into(holder.imageadapter)
         Glide.with(context).load(list[position].imageroom).into(holder.imageadapterroom)
-        Glide.with(context).load(list[position].imagebathroom).into(holder.imageadapterbathroom)
+
 
 
         holder.cardviewdata.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("hotelname",list[position].hotenmae)
-            bundle.putString("description", list[position].description)
-            bundle.putString("price", list[position].price)
-            bundle.putString("city",list[position].city)
-            bundle.putString("benefit",list[position].benefit)
-            bundle.putString("address",list[position].addressofhotel)
-            bundle.putString("roomsize",list[position].roomsize)
-            bundle.putString("imageroom", list[position].image.toString())
-            bundle.putString("imageroomgetdeatile", list[position].imageroom.toString())
-            bundle.putString("imagebathroomgetdeatile", list[position].imagebathroom.toString())
+
 
             val intent = Intent(context, Detailedpage::class.java)
-            intent.putExtras(bundle)
+            intent.putExtra("hotelname",list[holder.adapterPosition].hotenmae)
+            intent.putExtra("description", list[holder.adapterPosition].description)
+            intent.putExtra("price", list[holder.adapterPosition].price)
+            intent.putExtra("city",list[holder.adapterPosition].city)
+            intent.putExtra("benefit",list[holder.adapterPosition].benefit)
+            intent.putExtra("address",list[holder.adapterPosition].addressofhotel)
+            intent.putExtra("roomsize",list[holder.adapterPosition].roomsize)
+
+            intent.putExtra("imagebuilding",list[holder.adapterPosition].image)
+            intent.putExtra("imageroom",list[holder.adapterPosition].imageroom)
+
             context.startActivity(intent)
         }
     }
