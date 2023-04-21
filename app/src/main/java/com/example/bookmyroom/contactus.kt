@@ -15,7 +15,7 @@ class contactus : AppCompatActivity() {
         setContentView(binding.root)
         binding.button.setOnClickListener {
 
-            val mUri: Uri = Uri.parse("smsto:+9594245484")
+            val mUri: Uri = Uri.parse("smsto:+9082458900")
             val mIntent = Intent(Intent.ACTION_SENDTO, mUri)
             mIntent.setPackage("com.whatsapp")
             mIntent.putExtra("chat", true)
@@ -24,7 +24,7 @@ class contactus : AppCompatActivity() {
 
 
         binding.email.setOnClickListener {
-            val mailId = "bilkisshaikh779@gmail.com"
+            val mailId = "info@bookmyrooms.co.in"
             val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", mailId, null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject text here")
             emailIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml("<p><b>Some Content</b></p>" +

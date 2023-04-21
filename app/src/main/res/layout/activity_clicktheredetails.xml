@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bf" />
+        app:srcCompat="@drawable/baseline_camera_alt_24" />
 
     <TextView
         android:id="@+id/detailhotelnamerecydetail"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
- android:background="@drawable/bf"
+ android:background="@drawable/backgroundofchoose"
     tools:context=".choosescreen">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +65,7 @@
                     android:layout_height="136dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="44dp"
-                    android:src="@drawable/hotel"
+                    android:src="@drawable/hotelchoose"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +88,7 @@
                     android:layout_width="130dp"
                     android:layout_height="136dp"
                     android:layout_marginTop="32dp"
-                    android:src="@drawable/restorn"
+                    android:src="@drawable/resort"
                     app:civ_border_color="#FF000000"
                     app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="@+id/hoteimage"
