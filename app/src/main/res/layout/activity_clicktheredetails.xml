@@ -85,9 +85,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/regulatext"
             android:background="@drawable/detailbg"
+            android:fontFamily="@font/regulatext"
             android:text="Centrally located in Navi Mumbai, Yogi Executive, Navi Mumbai offers a rooftop pool and modern air-conditioned rooms with flat screen TV and satellite channels.
 The spacious guest rooms at Hotel Yogi are equipped with DVD player, telephone, minibar, safe and hairdryer. A work desk, tea/coffee maker and ironing facilities are also available.
 
@@ -99,10 +98,29 @@ Yogi Executive, Navi Mumbai is a 45-minute drive from Chhatrapati Shivaji Intern
             android:textAlignment="center"
             android:textColor="#231919"
             android:textSize="25sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView31" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btnbg"
+            android:fontFamily="@font/adamina"
+            android:paddingTop="6dp"
+            android:text="Book Now"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView32" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

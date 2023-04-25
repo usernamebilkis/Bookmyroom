@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +50,8 @@ class recycel : AppCompatActivity() {
                 else -> { return@setNavigationItemSelectedListener true}
             }
         }
+
+
         listofdata=ArrayList()
         adapter=clcikhere(this,listofdata)
         binding.recyclerView3.adapter=clcikhere(this,listofdata)
