@@ -30,21 +30,14 @@ class Resigration : AppCompatActivity() {
     lateinit var binding: ActivityResigrationBinding
     lateinit var auth: FirebaseAuth
     lateinit var number: String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResigrationBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
         supportActionBar?.hide()
-
-
         checkConnectivity()
 
-   binding.guest.setOnClickListener {
-        Global.guestlogin=1
-       startActivity(Intent(this,choosescreen::class.java)) }
-        binding.LoginLink.setOnClickListener { startActivity(Intent(this, Login::class.java)) }
+//        binding.LoginLink.setOnClickListener { startActivity(Intent(this, Login::class.java)) }
 //        binding.resgiterbtn.setOnClickListener {
 //            var name = binding.resgname.text.toString()
 //            var email = binding.resgemail.text.toString()
@@ -57,9 +50,7 @@ class Resigration : AppCompatActivity() {
 //                binding.resgemail.text.clear()
 //                binding.resgpassword.text.toString()
 //                binding.resgphone.text.toString()
-//
 //                Toast.makeText(this,"Succesfully Add",Toast.LENGTH_LONG).show()
-//
 //                startActivity(Intent(this,Login::class.java))
 //            }.addOnFailureListener {                  Toast.makeText(this,"Failured to add",Toast.LENGTH_LONG).show()
 //            }
@@ -87,7 +78,6 @@ class Resigration : AppCompatActivity() {
                 }
             } else {
                 Toast.makeText(this, "Enter The Number", Toast.LENGTH_LONG).show()
-
             }
         }
     }

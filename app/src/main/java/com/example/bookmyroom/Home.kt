@@ -51,9 +51,7 @@ class Home : AppCompatActivity() {
                     sendIntent.type = "text/plain"
                     startActivity(sendIntent)
                      return@setNavigationItemSelectedListener true
-
                 }
-
                 else -> { return@setNavigationItemSelectedListener true}
             }
         }
@@ -87,7 +85,6 @@ class Home : AppCompatActivity() {
                     val dataclass=itemSnapshot.getValue(homedataclass::class.java)
                     if (dataclass != null){
                         datalist.add(dataclass)
-
                     }
                 }
                 adapter.notifyDataSetChanged()

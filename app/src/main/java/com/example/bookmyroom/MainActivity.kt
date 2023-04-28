@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, Resigration::class.java)
+            val intent = Intent(this, Signinandphoneotp::class.java)
             startActivity(intent)
             finish()
         }, 3000)

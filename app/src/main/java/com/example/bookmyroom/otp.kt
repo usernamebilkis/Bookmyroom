@@ -65,8 +65,6 @@ class otp : AppCompatActivity() {
             }
 
         }
-
-
     }
 
     fun resendOtpVisisbility() {

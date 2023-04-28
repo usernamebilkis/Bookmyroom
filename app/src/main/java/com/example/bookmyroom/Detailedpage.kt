@@ -23,8 +23,6 @@ class Detailedpage : AppCompatActivity() {
     lateinit var binding: ActivityDetailedpageBinding
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailedpageBinding.inflate(layoutInflater)
@@ -61,7 +59,6 @@ class Detailedpage : AppCompatActivity() {
         val bundle = intent.extras
         if (bundle != null) {
             binding.detailhotelname.text = bundle.getString("hotelname")
-
             binding.detaildesc.text = bundle.getString("description")
             binding.detailpricesize.text = bundle.getString("price")
             binding.detailcity.text = bundle.getString("city")
